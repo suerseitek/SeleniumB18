@@ -12,6 +12,8 @@ public class SeleniumTest {
         WebDriver driver = new ChromeDriver();
         driver.get("http://google.com");
 
+        driver.manage().window().maximize();
+
          Thread.sleep(2000);
         driver.navigate().back();
 
@@ -29,6 +31,9 @@ public class SeleniumTest {
         System.out.println(driver.getCurrentUrl());
 
         driver.getPageSource();
+
+        Thread.sleep(2000);
+        driver.close();
 
 
     }
