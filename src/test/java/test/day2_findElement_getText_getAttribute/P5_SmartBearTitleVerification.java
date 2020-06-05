@@ -24,9 +24,9 @@ username:	Tester5-Enter
         String expectedWebOrdersTitle = "Web Orders";
         Thread.sleep(2000);
         if(actualWebOrdersTitle.contains(expectedWebOrdersTitle)){
-            System.out.println("Web Orders title verification passed");
+            System.out.println("Login title verification passed");
         }else{
-            System.out.println("Web Orders title verification failed");
+            System.out.println("Login title verification failed");
         }
 
         driver.findElement(By.name("ctl00$MainContent$username")).sendKeys("Tester");
@@ -34,9 +34,9 @@ username:	Tester5-Enter
         driver.findElement(By.name("ctl00$MainContent$login_button")).click();
 
         if(actualWebOrdersTitle.contains(expectedWebOrdersTitle)){
-            System.out.println("Web Orders title verification passed");
+            System.out.println("Landing Page title verification passed");
         }else{
-            System.out.println("Web Orders title verification failed");
+            System.out.println("Landing Page title verification failed");
         }
 
         Thread.sleep(2000);
