@@ -1,8 +1,9 @@
-package test;
+package test.day1_selenium_intro;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class P1_GoogleTitleVerification {
 
@@ -24,6 +25,20 @@ public class P1_GoogleTitleVerification {
 
         chrome.close();
 
+
+        WebDriverManager.firefoxdriver().setup();
+        WebDriver firefox = new FirefoxDriver();
+        firefox.get("https:practice.cybertekschool.com");
+
+        String actualTitleFirefox = firefox.getTitle();
+        String expectedres = "Practice";
+        if(actualTitleFirefox.equals(expectedres)){
+            System.out.println("Practice title verification PASSED!");
+        }else{
+            System.out.println("Practice title verification FAILED");
+        }
+
+firefox.close();
 
     }
 
