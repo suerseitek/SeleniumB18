@@ -17,43 +17,60 @@ public class P3_CybertekURLVerification {
     5.Verify URL contains: Expected: “email_sent”
     6.Verify textbox displayed the content as expected.Expected: “Your e-mail’s been sent!”
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
+        //TC #3: PracticeCybertek/ForgotPassword URL verification
+        //1. Open Chrome browser
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
+        //2. Go to http://practice.cybertekschool.com/forgot_password
         driver.get("http://practice.cybertekschool.com/forgot_password");
+
+        //3. Enter any email into input box
 
         WebElement emailInput = driver.findElement(By.name("email"));
         emailInput.sendKeys("anyemail@email.com");
 
-        Thread.sleep(2000);
-        driver.findElement(By.id("form_submit")).click();
+        //int inte2123 = driver.findElement(By.id("form_submit"));
 
-        String actualURL = driver.getCurrentUrl();
-        String expectedInURL = "email_sent";
+        //4. Click on Retrieve password
+        WebElement retrievePasswordButton = driver.findElement(By.id("form_submit"));
+        retrievePasswordButton.click();
 
-        System.out.println("Current URL is: "+ actualURL);
-        if(actualURL.contains(expectedInURL)){
-            System.out.println("URL verification PASSED");
-        }else {
-            System.out.println("URL verification FAILED");
-        }
+        //5. Verify URL contains:
+        //  Expected: “email_sent”
+        String actualUrl = driver.getCurrentUrl();
+        String expectedInUrl = "email_sent";
 
-        String actualText = driver.findElement(By.name("confirmation_message")).getText();
-        String expectedText = "Your e-mail's been sent!";
+        System.out.println("The current URL: " + actualUrl);
 
-        System.out.println("Confirmation message text: "+ actualText);
-        if(actualText.equals(expectedText)){
-            System.out.println("Confirmation message text verification PASSED");
+        if (actualUrl.contains(expectedInUrl)){
+            System.out.println("URL verification PASSED!");
         }else{
-            System.out.println("Confirmation message text verification FAILED");
+            System.out.println("URL verification FAILED!");
         }
 
-        driver.quit();
+        //6. Verify textbox displayed the content as expected.
+        //Expected: “Your e-mail’s been sent!”
 
+        WebElement confirmationMessage = driver.findElement(By.name("confirmation_message"));
+        //String actualMessage = driver.findElement(By.name("confirmation_message")).getText();
 
+        String actualMessageText = confirmationMessage.getText();
+        String expectedMessageText = "Your e-mail's been sent!";
+
+        // System.out.println("actualMessage: " + actualMessageText);
+
+        if(actualMessageText.equals(expectedMessageText)){
+            System.out.println("Confirmation message text verification PASSED!");
+        }else{
+            System.out.println("Confirmation message text verification FAILED!");
+        }
+
+        if (confirmationMessage.isDisplayed()){
+            System.out.println("Message is displayed, verification PASSED!");
+        }else{
+            System.out.println("Message is NOT displayed, verification FAILED!");
+        }
     }
-
-
-
 }
