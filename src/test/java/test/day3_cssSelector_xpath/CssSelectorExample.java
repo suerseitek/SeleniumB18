@@ -28,6 +28,8 @@ public class CssSelectorExample {
             System.out.println("Title verification FAILED!");
         }
 
+        driver.quit();
+
     }
 
 }
